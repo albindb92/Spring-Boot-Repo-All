@@ -9,14 +9,23 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter{
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-			
-			http
-			.authorizeRequests()
-			.antMatchers("/dashboard").authenticated() // Protected
-			.antMatchers("/home").permitAll() //Not protected
-			.and()
-			.formLogin()
-			.and()
-			.httpBasic();
+
+		// TO AUTHENTICATE ONY FEW ENDPOINTS
+//			http
+//			.authorizeRequests()
+//			.antMatchers("/dashboard").authenticated() // Protected
+//			.antMatchers("/home").permitAll() //Not protected
+//			.and()
+//			.formLogin()
+//			.and()
+//			.httpBasic();
+		
+		// To deny all http request- EXAMPLE ADMIN ENDPOINTS CALLS SHOULD NOT BE ACCESSIBLE BY USER
+		http
+		.authorizeRequests()
+		.anyRequest()
+		.denyAll()
+		.and()
+		.httpBasic();
 	}
 }
