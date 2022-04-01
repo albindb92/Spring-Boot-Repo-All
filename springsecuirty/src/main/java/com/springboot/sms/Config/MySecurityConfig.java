@@ -21,10 +21,20 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter{
 //			.httpBasic();
 		
 		// To deny all http request- EXAMPLE ADMIN ENDPOINTS CALLS SHOULD NOT BE ACCESSIBLE BY USER
+//		http
+//		.authorizeRequests()
+//		.anyRequest()
+//		.denyAll()
+//		.and()
+//		.httpBasic();
+		
+		// To deny all http request- EXAMPLE ADMIN ENDPOINTS CALLS SHOULD NOT BE ACCESSIBLE BY USER
+		
+		
 		http
 		.authorizeRequests()
-		.anyRequest()
-		.denyAll()
+		.antMatchers("/user/**").permitAll()
+		.antMatchers("/admin/**").denyAll()
 		.and()
 		.httpBasic();
 	}

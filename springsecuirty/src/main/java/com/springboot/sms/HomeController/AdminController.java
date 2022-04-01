@@ -5,17 +5,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/user")
-public class HomeController {
-
-	@GetMapping("/home")
-	public String home() {
-		return "home page";
-	}
+@RequestMapping("/admin")
+public class AdminController {
 	
-	@GetMapping("/dashboard")
-	public String dashboard() {
-		return "This is dashboard";
-	}
+		@GetMapping("/home")
+		public String adminHome() {
+			return "Admin Home";
+		}
+		
+		@GetMapping("/dashboard")
+		public String adminDashboard() {
+			return "Admin Dashboard";
+		}
 }
-
